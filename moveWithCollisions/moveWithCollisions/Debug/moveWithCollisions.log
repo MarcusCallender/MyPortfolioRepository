@@ -1,0 +1,4 @@
+﻿  move.cpp
+e:\_c++\asignments\06whileloops\movewithcollisions\movewithcollisions\move.cpp(127): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  moveWithCollisions.vcxproj -> E:\_c++\asignments\06whileLoops\moveWithCollisions\Debug\moveWithCollisions.exe
+  moveWithCollisions.vcxproj -> E:\_c++\asignments\06whileLoops\moveWithCollisions\Debug\moveWithCollisions.pdb (Full PDB)

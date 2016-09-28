@@ -1,0 +1,45 @@
+robo
+
+linkage between controler and fighter
+
+pre match dialoug
+
+charicter select
+play type select
+charecter descriptions
+
+better ui display
+
+ai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+draw_win/draw_Lose
+rename robo powerd up moves
+
+
+
+
+
+
+
+
+
+
+
+
+

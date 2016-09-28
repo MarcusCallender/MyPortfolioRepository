@@ -1,0 +1,29 @@
+focus
+hyper skill
+
+damage up .1 by 100% health loss
+focus up .2 by 100% health loss
+
+Rush	focus gain more when wining fast hyper
+Lance	charge reversal hyper
+Robo	power up stance hyper heavy knocks down when powerd up
+Wave	poison/toxic hyper counter
+Shiki	a move gets powerd up when takes damage
+Tarja	slow normals focus denial drain health command grab hyper
+Fenrir	faster normals hyper reversal
+
+overload circuits(activate)
+overload circuits(de-activate)
+
+blinding cannon(charged)
+blinding cannon(not-charged)
+
+shiki:
+	light attack
+	heavy attack
+	*grab*
+	block
+	dodge
+
+
+20% of damage gained as focus

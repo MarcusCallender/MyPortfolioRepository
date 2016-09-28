@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Charecters">
+      <UniqueIdentifier>{41276fac-2e9c-4333-b8aa-8e1d16dea17e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Charecters">
+      <UniqueIdentifier>{34e052b5-ba2b-4ca7-93b2-800172511b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controlers">
+      <UniqueIdentifier>{fc137291-ef19-4f1c-a2e2-19bba2620ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bases">
+      <UniqueIdentifier>{2edb863a-e9d7-4983-b07f-3a9f4c8f259e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\New">
+      <UniqueIdentifier>{ca7c64eb-2b16-41e7-92e4-16e608c154da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\New">
+      <UniqueIdentifier>{dd4721e4-4a47-4bd2-bc13-2ad6cb54bdfc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fenrir.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Lance.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Refere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Robo.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Rush.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Tarja.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Wave.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Dash.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Status.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DSPD_017.cpp">
+      <Filter>Source Files\Charecters</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.cpp">
+      <Filter>Source Files\Controlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Controlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Controler.cpp">
+      <Filter>Source Files\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Filter>Source Files\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseFighter.cpp">
+      <Filter>Source Files\New</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseContainer.cpp">
+      <Filter>Source Files\New</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseControler.cpp">
+      <Filter>Source Files\New</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerControler.cpp">
+      <Filter>Source Files\New</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Tutorial.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Select.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Data.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Fighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Refere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fenrir.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Lance.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Robo.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Rush.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Tarja.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Dash.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Controler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Status.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DSPD_017.h">
+      <Filter>Header Files\Charecters</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseFighter.h">
+      <Filter>Header Files\New</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseContainer.h">
+      <Filter>Header Files\New</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseControler.h">
+      <Filter>Header Files\New</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerControler.h">
+      <Filter>Header Files\New</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

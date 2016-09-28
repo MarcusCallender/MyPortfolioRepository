@@ -1,0 +1,71 @@
+Ability
+Rush:	when you land an attack or parry you gain focus at a faster rate
+Lance:	must block before being able to use hyper skill
+Robo:	none
+Wave:	light attack inflict venom(focus down), heavy attack inflicts poison(hp down)
+Shinji:	when you get hit a random move gets a buff
+Tarja:	enemies get no focus when hit by one of your attacks
+Fenrir: none
+
+Hyper skill
+Rush:	fast damaging light attack
+Lance:	very powerful instant attack
+Robo:	power up state
+Wave:	defence stance and counter
+Shinji:	ultra powerful command grab
+Tarja:	comand grab that drains health
+Fenrir:	instant attack
+
+Nickname
+Rush:	Lightning fast hot head 
+Lance:	Calculating menice billionaire
+Robo:	Iron body with a heart of gold
+Wave:	Swift silent assasin
+Shinji:	Luck over talent
+Tarja:	Posesd warlord
+Fenrir:	Anchent wolf hero
+
+Real name
+Rush:	Jhosiph Shiner
+Lance:	Ramon Lance Venhimer XVII
+Robo:	dispatch super powered droid unit 017
+Wave:	Yukio Shikata
+Shinji:	Liam Shiner
+Tarja:	Tarja Varii
+Fenrir:	Fergus McEllen
+
+Description
+Rush:	after his parents where killed by Lance he swore revenge
+Lance:	
+Robo:	
+Wave:	
+Shinji:	
+Tarja:	
+Fenrir:	
+
+
+
+Rush
+Ability: When you land an attack or parry you gain focus at a faster rate
+Hyper Skill: Comand grab that drains health
+
+Would you like to pick Rush?
+>
+
+(1 = yes, anything else = no)
+
+
+
+
+Charicters
+0: Rush	
+1: Lance
+2: Robo	
+3: Wave	
+4: Shinji
+5: Tarja
+6: Fenrir
+
+Select a fighter.
+>
+

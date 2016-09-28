@@ -1,0 +1,21 @@
+BUG TRACKER
+
+TO TEST:
+rushes focus heat gain
+lances hyper conditions
+
+CURRENT:
+the UI disapears when you enter an invalid key
+hypers can be used at any time
+
+FIXED:
+knockdown dosen't slow down attacks
+charecters don't recover from knockdown
+
+
+
+
+crash
+rush v lance no
+wave v tarja no
+fenrir v dash yes

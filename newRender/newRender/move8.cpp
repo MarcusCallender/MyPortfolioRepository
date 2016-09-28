@@ -1,0 +1,480 @@
+//#include "ConsoleRendering.h"
+//#include <iostream> //cout
+//#include <time.h> //time(0)
+//#include <string> //std::string type variables
+//
+//static const int FRAME_DELAY_MILLISECONDS = 1000/24;
+//
+////Deltatime also known as dt
+//static const float FRAME_DELAY_SECONDS = FRAME_DELAY_MILLISECONDS * 0.001f;
+//
+//float totalTime = 0.0f;
+//
+////the height & whidth of the application 
+//const int screenHeight = 16, screenWidth = 64;
+////the ammount of units the player can jump
+//const float jumpHeight = 6.0f;
+////the maximum ammount of rocks that can be spawned		the ammount of time the player has to collect stars
+//const int maxRocks = (screenWidth * screenHeight) - 1, COUNTDOWN_TIME = 30;
+////the horizontal positions of the score and time indicators
+//const int scorePos = 0, timePos = 40;
+////the ammount of frames the player will change there apperance for once they collect a star
+//const float seccondsPlayerChangedFor = 0.125f;
+////the number of stars to be on the screen falling in any frame
+//const int maxStars = 5;
+////messages informing the player of time remaining & stars collected
+//const std::string timeMessage = "Time Remaining: ", scoreMessage = "Stars: ";
+//
+////setd the player to start at left bottom left corner of the screen		initializes a variable for the peek of there jumps
+//float xPos = 0.0f, yPos = screenHeight - 1, jumpCieling = 0;
+////sets the player as on the ground & not falling	sete not to exit the game and a star has not just been collected
+//bool grounded = true, jumping = false, toExit = false, starCollected = false;
+//int fallenStarAmmount = 0, countdown = COUNTDOWN_TIME, stars = 0;
+//float playerChangeBack = 0.0f;
+//float fallenStars [maxRocks] [2];
+//std::string replay = "";
+//int fallingStars = 0;
+//float starPositions [maxStars] [2];
+////bool starTwinkleAndFloat [maxStars];
+//
+//const int intToFloatConvert = 10000;
+//const float starTwinkleDelay = 0.41f, starFallDelay = 0.082f, mySpeed = 0.041f, myJumpSpeed = 0.041f;
+//const int starTwinkleDelayINT = (int) (starTwinkleDelay * intToFloatConvert), starFallDelayINT = (int) (starFallDelay * intToFloatConvert);
+//float starTwinkleCount[maxStars] = {0.0f}, starFloatCount[maxStars] = {0.0f}, mySpeedCounter = 0.0f, myJumpSpeedCounter = 0.0f;
+//
+//bool toSpawn[maxStars];
+//float spawnDelay[maxStars];
+//
+//int debug = 0, debug2 = 0;
+//
+//
+////Function to get keyboard inputs using windows GetASyncKeyState.
+////The vKey parameter below is a virtual-key in Windows. there's a list of Virtual Keys that you can use here: https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
+//bool IsKeyDown(int vKey);
+//
+////Handle our inputs from the keyboard, apply to our user variables.
+//void HandleInput();
+//
+////An intro sequence that writes instructions to the user and halts our program.
+//void IntroSequence();
+//
+//void Initialize();
+//void Update();
+//void Render();
+//
+////moves the player into the air & creates a cieling, when they hit this cieling it starts to move them down untill they are ontop of the ground or a fallen star
+//void JumpManager ();
+////checks if any new stars need to be made and if so randomly genirates a position for them
+//void spawnStar ();
+////checks if a star are 1 unit above the ground or a falllen star 
+////if true turns it into fallen stars
+////if false moves it down one unit		(see starTwinkleAndFloat)
+//void moveStar ();
+////returns true if the givven x & y peramiter match those of one of the fallen stars
+//bool seeFallenStars (int inX, int inY);
+////prints words to the console letter by letter and incraments the buffer count accordingly
+//int printWord (std::string word, int rendererPos);
+////manages collisions when the player is falling and moving left or right
+//bool airCollision (int move);
+////same as printWord for numbers but converts them to strings first
+//int printNumber (int number, int rendererPos);
+////displayes the players ending score and exits the application
+//void gameOver ();
+////same as seeFallenStars but for falling stars
+//bool seeStars (int x, int y);
+////makes sure stars don't spawn on-top of each other		(not sure if this works)
+//bool checkSpawnStarMatch (int z, int skip);
+//
+//
+//
+//void goUpStep (float inX, float inY, int move);
+//
+//int main()
+//{
+//	Initialize();
+//
+//	while(true)
+//	{
+//		Update();
+//		if (toExit) {
+//			break;
+//		}
+//		Render();
+//
+//		Sleep(FRAME_DELAY_MILLISECONDS);
+//	}
+//
+//	return 0;
+//}
+//
+//void Initialize()
+//{
+//	//Run the intro sequence before starting the rendering.
+//	IntroSequence();
+//
+//	//Initialize our ConsoleRendering library with a screen width and height of 64
+//	ConsoleRendering::Initialize(screenWidth, screenHeight);
+//	srand((unsigned int) time(0));
+//
+//	for (int z = 0; z < maxStars; z++) {
+//		toSpawn[z] = true;
+//		spawnDelay[z] = ((rand() % 32) * FRAME_DELAY_SECONDS) + totalTime;
+//	}
+//}
+//
+//void Update()
+//{
+//	//Increment the total time our program has been running.
+//	totalTime += FRAME_DELAY_SECONDS;
+//	countdown = COUNTDOWN_TIME - (int) totalTime;
+//
+//	for (int z = 0; z < fallingStars; z++) {
+//		if ((xPos == starPositions[z][0] || xPos + 1 == starPositions[z][0] || xPos - 1 == starPositions[z][0]) && 
+//			(yPos == starPositions[z][1] || yPos + 1 == starPositions[z][1] || yPos - 1 == starPositions[z][1])) {
+//				stars++;
+//				fallingStars--;
+//				toSpawn[z] = true;
+//				spawnDelay[z] = ((rand() % 8) * FRAME_DELAY_SECONDS) + totalTime;
+//				starCollected = true;
+//		}
+//	}
+//
+//	spawnStar();
+//	moveStar();
+//
+//	HandleInput();
+//
+//	if (!grounded) {
+//		JumpManager();
+//	}
+//
+//	for (int y = 0; y < screenHeight; y++) {
+//		for (int x = 0; x < screenWidth; x++) {
+//			if (x == scorePos && y == 0) {
+//				x = printWord(scoreMessage, x);
+//				x = printNumber(stars, x);
+//			} else if (x == timePos && y == 0) {
+//				x = printWord(timeMessage, x);
+//				x = printNumber(countdown, x);
+//			} else if (x == xPos && y == yPos) {
+//				if (starCollected) {
+//					ConsoleRendering::DrawToScreenBuffer(x, y, '@');
+//				} else {
+//					ConsoleRendering::DrawToScreenBuffer(x, y, '^');
+//				}
+//			} else if (seeFallenStars(x, y)) {
+//				ConsoleRendering::DrawToScreenBuffer(x, y, '#');
+//			} else if (seeStars(x, y)) {
+//				if (starTwinkleCount[0] < starTwinkleDelay) {
+//					ConsoleRendering::DrawToScreenBuffer(x, y, '*');
+//				} else {
+//					ConsoleRendering::DrawToScreenBuffer(x, y, '+');
+//				}
+//			} else {
+//				ConsoleRendering::DrawToScreenBuffer(x, y, ' ');
+//			}
+//		}
+//	}
+//
+//	if (totalTime >= COUNTDOWN_TIME) {
+//		gameOver();
+//	}
+//
+//	if (starCollected) {
+//		if (playerChangeBack <= seccondsPlayerChangedFor) {
+//			playerChangeBack += FRAME_DELAY_SECONDS;
+//		} else {
+//			starCollected = false;
+//			playerChangeBack = 0;
+//		}
+//	}
+//}
+//
+//void Render()
+//{
+//	ConsoleRendering::Render();
+//	ConsoleRendering::ClearScreenBuffer();
+//}
+//
+//bool IsKeyDown(int key)
+//{
+//	return (GetAsyncKeyState(key) & 0x8000) != 0;
+//}
+//
+//void HandleInput()
+//{
+//	if (IsKeyDown('D')) {
+//		if (xPos != screenWidth - 1 && !airCollision(1)) {
+//			mySpeedCounter += FRAME_DELAY_SECONDS;
+//			
+//			for (int z = 0; z < mySpeedCounter / mySpeed; z++) {
+//				xPos++;
+//				mySpeedCounter -= mySpeed;
+//			} 
+//			
+//			if (!seeFallenStars((int) xPos, (int) (yPos + 1)) && yPos < screenHeight - 1) {
+//				grounded = false;
+//			}
+//		} else if (grounded && xPos != screenWidth - 1) {
+//			goUpStep(xPos, yPos, +1);
+//		}
+//	} else if (IsKeyDown('A')) {
+//		if (xPos != 0 && !airCollision(-1)) {
+//			mySpeedCounter -= FRAME_DELAY_SECONDS;
+//			
+//			for (int z = 0; z < (0 - mySpeedCounter) / mySpeed; z++) {
+//				xPos--;
+//				mySpeedCounter += mySpeed;
+//			} 
+//			
+//			if (!seeFallenStars((int) xPos, (int) (yPos + 1)) && yPos < screenHeight - 1) {
+//				grounded = false;
+//			}
+//		} else if (grounded && xPos != 0) {
+//			goUpStep(xPos, yPos, -1);
+//		}
+//	}
+//
+//	if (IsKeyDown(' ')) {
+//		if (grounded) {
+//			grounded = false;
+//			jumping = true;
+//			jumpCieling = yPos - jumpHeight;
+//		}
+//	}
+//
+//	if (IsKeyDown('Q')) {
+//		toExit = true;
+//	}
+//}
+//
+//void IntroSequence()
+//{
+//	std::cout << "Collect as many stars as you can in " << COUNTDOWN_TIME << " secconds!\nUse 'A' and 'D' to move and 'space' to jump.\nUse 'Q' to exit.\n";
+//	system("Pause");
+//	//clear the entire screen using system("cls") since we haven't Initialized ConsoleRendering yet.
+//	system("cls");
+//}
+//
+//void JumpManager () {
+//	if (jumping) {
+//		myJumpSpeedCounter += FRAME_DELAY_SECONDS;
+//
+//		/*if (myJumpSpeedCounter >= myJumpSpeed) {
+//			yPos--;
+//			myJumpSpeedCounter = 0.0f;
+//		}
+//		
+//		if (yPos == jumpCieling) {
+//			jumping = false;
+//		}*/
+//
+//		for (int z = 0; z < (myJumpSpeedCounter / myJumpSpeed); z++) {
+//			yPos--;
+//			if (yPos == jumpCieling) {
+//				jumping = false;
+//				break;
+//			}
+//			myJumpSpeedCounter -= myJumpSpeed;
+//		}
+//	} else {
+//		myJumpSpeedCounter += FRAME_DELAY_SECONDS;
+//
+//		/*if (myJumpSpeedCounter >= myJumpSpeed) {
+//			yPos++;
+//			myJumpSpeedCounter = 0.0f;
+//		}
+//		if ((yPos == screenHeight - 1) || (seeFallenStars((int) xPos, (int) yPos + 1))) {
+//			grounded = true;
+//		}*/
+//
+//		for (int z = 0; z < (myJumpSpeedCounter / myJumpSpeed); z++) {
+//			yPos++;
+//			if ((yPos == screenHeight - 1) || (seeFallenStars((int) xPos, (int) yPos + 1))) {
+//				grounded = true;
+//				myJumpSpeedCounter = 0.0f;
+//				break;
+//			}
+//			myJumpSpeedCounter -= myJumpSpeed;
+//		}
+//	}
+//}
+//
+//void spawnStar () {
+//	for (int z = 0; z < maxStars; z++) {
+//		
+//		if (toSpawn[z]) {// && (totalTime > spawnDelay[z])) {
+//			int pos = 0;
+//
+//			do {
+//				pos = rand () % (int) screenWidth;
+//			} while (checkSpawnStarMatch(pos, z));
+//
+//			starPositions[z][0] = (float) pos;
+//			starPositions[z][1] = 0.0f;
+//			/*
+//			if (fallingStars % 2 == 0) {
+//			starTwinkleAndFloat[z] = true;
+//			} else {
+//			starTwinkleAndFloat[z] = false;
+//			}
+//			*/
+//
+//			starFloatCount[z] = (float) (rand() % starFallDelayINT);
+//			starFloatCount[z] /= intToFloatConvert;
+//
+//			starTwinkleCount[z] = (float) (rand() % starTwinkleDelayINT);
+//			starTwinkleCount[z] /= intToFloatConvert;
+//
+//			fallingStars++;
+//			toSpawn[z] = false;
+//		}
+//	}
+//}
+//
+//bool checkSpawnStarMatch (int z, int skip) {
+//	for (int x = 0; x < maxStars; x++ ) {
+//		if (z == starPositions[x][0] && x != skip) {
+//			return true;
+//		}
+//	}
+//
+//	return false;
+//}
+//
+//void moveStar () {
+//	int x = fallingStars;
+//	for (int z = 0; z < x; z++) {
+//		/*if (starFloatCount[z] >= starFallDelay) {
+//			if (starPositions[z][1] == screenHeight - 1 || seeFallenStars((int) starPositions[z][0], (int) starPositions[z][1] + 1)) {
+//				fallenStars [fallenStarAmmount] [0] = starPositions [z] [0];
+//				fallenStars [fallenStarAmmount] [1] = starPositions [z] [1];
+//				fallenStarAmmount++;
+//				fallingStars--;
+//				toSpawn[z] = true;
+//				spawnDelay[z] = ((rand() % 8) * FRAME_DELAY_SECONDS) + totalTime;
+//			}
+//			starPositions[z][1]++;
+//			starFloatCount[z] = 0.0f;
+//			debug++;
+//		} else {
+//			starFloatCount[z] += FRAME_DELAY_SECONDS;
+//			debug2++;
+//		}*/
+//
+//		starFloatCount[z] += FRAME_DELAY_SECONDS;
+//
+//		for (int x = 0; x < (starFloatCount[z] / starFallDelay); x++) {
+//			starPositions[z][1]++;
+//			if (starPositions[z][1] == screenHeight - 1 || seeFallenStars((int) starPositions[z][0], (int) starPositions[z][1] + 1)) {
+//				fallenStars [fallenStarAmmount] [0] = starPositions [z] [0];
+//				fallenStars [fallenStarAmmount] [1] = starPositions [z] [1];
+//				fallenStarAmmount++;
+//				fallingStars--;
+//				toSpawn[z] = true;
+//				spawnDelay[z] = ((rand() % 8) * FRAME_DELAY_SECONDS) + totalTime;
+//				starFloatCount[z] = 0.0f;
+//				break;
+//			}
+//			starFloatCount[z] -= starFallDelay;
+//		}
+//
+//		if (starTwinkleCount[z] < starTwinkleDelay * 2) {
+//			starTwinkleCount[z] += FRAME_DELAY_SECONDS;
+//		} else {
+//			starTwinkleCount[z] = 0.0f;
+//		}
+//	}
+//}
+//
+//bool seeFallenStars (int inX, int inY) {
+//	bool xMatch = false, yMatch = false;
+//
+//	for (int z = 0; z < fallenStarAmmount; z++) {
+//		if (inX == fallenStars[z][0]) {
+//			xMatch = true;
+//		}
+//
+//		if (inY == fallenStars[z][1]) {
+//			yMatch = true;
+//		}
+//
+//		if (xMatch && yMatch) {
+//			return true;
+//		}
+//		xMatch = false;
+//		yMatch = false;
+//	}
+//
+//	return false;
+//}
+//
+//int printWord (std::string word, int rendererPos) {
+//	for (int z = 0; z < (signed int) word.length(); z++) {
+//		ConsoleRendering::DrawToScreenBuffer(rendererPos + z, 0, word[z]);
+//	}
+//
+//	return rendererPos + word.length();
+//}
+//
+//bool airCollision (int move) {
+//	bool result = false;
+//	if (!grounded && !jumping) {
+//		result = seeFallenStars((int) (xPos + move), (int) (yPos + 1));
+//	} else {
+//		result = seeFallenStars((int) (xPos + move), (int) yPos);
+//	}
+//
+//	return result;
+//}
+//
+//int printNumber (int number, int rendererPos) {
+//
+//	std::string buffer = std::to_string(number);
+//
+//	int bufferToGoTo = printWord(buffer, rendererPos);
+//	return bufferToGoTo;
+//}
+//
+//void gameOver () {
+//	system("cls");
+//	std::cout << "Well done! You managed to get " << stars << " stars! (^^)/*\n";
+//	toExit = true;
+//}
+//
+//bool seeStars (int inX, int inY) {
+//	bool xMatch = false, yMatch = false;
+//
+//	for (int z = 0; z < fallingStars; z++) {
+//		if (inX == starPositions[z][0]) {
+//			xMatch = true;
+//		}
+//
+//		if (inY == starPositions[z][1]) {
+//			yMatch = true;
+//		}
+//
+//		if (xMatch && yMatch) {
+//			return true;
+//		}
+//		xMatch = false;
+//		yMatch = false;
+//	}
+//
+//	return false;
+//}
+//
+//void goUpStep (float inX, float inY, int move) {
+//	bool goinUp = true;
+//
+//	for (int z = 0; z < fallenStarAmmount; z++) {
+//		if (inX + move == fallenStars[z][0] && inY - 1 == fallenStars[z][1]) {
+//			goinUp = false;
+//		}
+//	}
+//
+//	if (goinUp) {
+//		xPos += move;
+//		yPos--;
+//	}
+//}
